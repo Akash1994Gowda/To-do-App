@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Vue</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      height: 90vh;
+      width: 98vw;
+      justify-content: center;
+      align-items: center;
+      background: #c8a7d9bd;
+      user-select: none;
+    }
+
+    .app {
+      padding: 20px;
+      border-radius: 10px;
+      text-align: right;
+      background: #5f9ea085;
+      box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+        rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+        rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    }
+
+    li {
+      list-style-type: none;
+      font-family: math;
+      font-weight: 400;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #ffffff;
+      margin-bottom: 3px;
+      border-radius: 2px;
+      padding-left: 5px;
+    }
+
+    ul {
+      color: white;
+      line-height: 25px;
+      border: 1px solid #6f77d5;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background: #4d4ae88c;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+
+    .tag-btn {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+    }
+
+    .bg-class {
+      background: #0000ff4f;
+      border: 1px;
+    }
+
+    button {
+      appearance: button;
+      background-color: #4d4ae8;
+      border: 1px solid #4d4ae8;
+      border-radius: 5px;
+      box-shadow: rgba(255, 255, 255, 0.15) 0 1px 0 inset,
+        rgba(46, 54, 80, 0.075) 0 1px 1px;
+      box-sizing: border-box;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-block;
+      font-family: Inter, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0px 10px;
+      text-align: center;
+      text-transform: none;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      touch-action: manipulation;
+      vertical-align: middle;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 5px 0;
+      border: 1px solid #c298d6;
+      background: #4d4ae88c;
+      border-radius: 4px;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      color: white;
+    }
+
+    h2 {
+      font-family: math;
+      font-weight: 400;
+      text-align: center;
+      background: #6f77d5;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-shadow: inset 0 1px 3px #ddd;
+      border-radius: 4px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+    .submit {
+      width: 100%;
+      font-size: 20px;
+      font-family: monospace;
+    }
+
+    .assign-flex {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 50px;
+    }
+
+    hr {
+      height: 2px;
+      background: cyan;
+    }
+
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #4d4ae8c7;
+      color: white;
+      text-align: center;
+    }
+
+    .footer-cls {
+      margin: 0;
+      padding: 5px 0;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
+
+    .close {
+      height: 21px;
+      margin-right: 10px;
+      background: currentColor;
+      padding: 0 5px;
+      border-radius: 1px;
+    }
+
+    input[type="checkbox"] {
+      cursor: pointer;
+    }
+
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite;
+      /* Safari */
+      animation: spin 2s linear infinite;
+    }
+    /* Safari */
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading {
+      display: flex;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      left: 0;
+      background: #000000a3;
+    }
+  </style>
+
+  <body>
+    <div id="app"></div>
+    <div class="footer">
+      <p class="footer-cls">Need to add</p>
+    </div>
+    <script type="module">
+      import App from "./js/components/app.js";
+      Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
